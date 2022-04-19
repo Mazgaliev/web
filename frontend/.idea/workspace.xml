@@ -559,6 +559,7 @@
       <change afterPath="$PROJECT_DIR$/../web/src/main/resources/application.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../web/src/test/java/com/example/bookstore/BookStoreApplicationTests.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../web/system.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -601,7 +602,8 @@
       <workItem from="1649870908799" duration="341000" />
       <workItem from="1649878751820" duration="89000" />
       <workItem from="1650191560919" duration="828000" />
-      <workItem from="1650374598124" duration="363000" />
+      <workItem from="1650374598124" duration="899000" />
+      <workItem from="1650376478843" duration="557000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1650374637703</created>
