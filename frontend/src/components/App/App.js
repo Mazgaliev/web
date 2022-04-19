@@ -10,6 +10,7 @@ import Authors from "../Authors/Authors";
 import Categories from "../Categories/Categories";
 import Header from "../Header/Header";
 import AddBook from "../Books/AddBook/AddBook";
+import EditBook from "../Books/EditBook/EditBook";
 
 class App extends Component {
     constructor(props) {
@@ -17,7 +18,8 @@ class App extends Component {
         this.state = {
             books: [],
             authors: [],
-            categories: []
+            categories: [],
+            selectedBook: {}
         }
     }
 
@@ -36,7 +38,13 @@ class App extends Component {
             })
         });
     }
-
+    getBook = (id) => {
+        bookStoreService.getBook(id).then((data) => {
+            this.setState({
+                selectedBook: data.data
+            })
+        })
+    }
     loadCategories = () => {
         bookStoreService.fetchCategories().then((data) => {
             this.setState({
@@ -65,17 +73,14 @@ class App extends Component {
             });
     }
 
+    editBook = (name, category, author, availableCopies) => {
+        bookStoreService.editBook(name, category, author, availableCopies).then(() => {
+            this.loadBooks();
+        });
+    }
+
     render() {
         return (
-            // <div>
-            //     <Books books={this.state.books}/>
-            // </div>
-            // <div>
-            //     <Authors authors={this.state.authors}/>
-            // </div>
-            // <div>
-            //     <Categories categories={this.state.categories}/>
-            // </div>
             <Router>
                 <Header/>
                 <main>
@@ -86,6 +91,10 @@ class App extends Component {
                             <Route path={"/books/add"} element={<AddBook categories={this.state.categories}
                                                                          authors={this.state.authors}
                                                                          onAddBook={this.addBook}/>}/>
+                            <Route path={"books/edit/:id"} element={<EditBook categories={this.state.categories}
+                                                                              authors={this.state.authors}
+                                                                              onEditBook={this.editBook}
+                                                                              book={this.state.selectedBook}/>}/>
                             <Route path={"/books"}
                                    element={<Books books={this.state.books} onDelete={this.deleteBook}/>}/>
 
@@ -102,3 +111,34 @@ class App extends Component {
 }
 
 export default App;
+// <Router>
+// <Header/>
+// <main>
+// <div className="container">
+// <Route path={"/authors"} exact render={() =>
+
+//                 <Manufacturers authors={this.state.authors}/>}/>
+//
+//             <Route path={"/categories"} exact render={() =>
+//                 <Categories categories={this.state.categories}/>}/>
+//
+//             <Route path={"/books/add"} exact render={() =>
+//                 <ProductAdd categories={this.state.categories}
+//                             authors={this.state.authors}
+//                             onAddBook={this.addBook}/>}/>
+//
+//             <Route path={"/books/edit"} exact render={() =>
+//                 <ProductEdit categories={this.state.categories}
+//                              authors={this.state.authors}
+//                              onEditBook={this.editBook}
+//                              book={this.state.selectedBook}/>}/>
+//
+//             <Route path={"/books"} exact render={() =>
+//                 <Products books={this.state.books}
+//                           onDelete={this.deleteBook}
+//                           onEdit={this.getBook}/>}/>
+//
+//             <Redirect to={"/books"}/>
+//         </div>
+//     </main>
+// </Router>

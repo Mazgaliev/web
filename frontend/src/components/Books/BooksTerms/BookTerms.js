@@ -10,10 +10,17 @@ const BookTerms = (props) => {
             <td scope={"col"}>{props.term.author.country.name}</td>
             <td scope={"col"}>{props.term.availableCopies} </td>
             <td scope={"col"} className={"text-right"}>
-                <a title={"Delete"} className={"btn btn-danger"}
-                   onClick={() => props.onDelete(props.term.id)}>Delete</a>
+                <div className={"row"}>
+                    <div className={"container"}>
+                        <a title={"Delete"} className={"btn btn-danger"}
+                           onClick={() => props.onDelete(props.term.id)}>Delete</a>
+                    </div>
+                    <div className={"container"}>
+                        <Link title={"Edit"} className={"btn btn-info"}
+                              onClick={() => props.onEdit(props.term.id)} to={`/books/edit/{id}`}>Edit</Link>
+                    </div>
+                </div>
             </td>
-
         </tr>
     )
 }

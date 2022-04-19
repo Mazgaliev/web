@@ -22,9 +22,10 @@ const books = (props) => {
                         <tbody>
                         {props.books.map((term) => {
                             return (
-                                <BookTerms term={term} onDelete={props.onDelete}/>
+                                <BookTerms term={term} onDelete={props.onDelete} onEdit={props.onEdit}/>
                             );
                         })}
+
                         </tbody>
                     </table>
                 </div>
